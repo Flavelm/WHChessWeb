@@ -1,5 +1,14 @@
 # WHChessWeb
 
+## Project idea
+
+> Chess game mode where blunders are highlighted. But the idea was not realized. Now there is the usual game of chess and the fog of war.
+
+### Frontend for
+```
+github.com/baHHbaSh/WHChess
+```
+
 ## Project setup
 ```
 npm install
