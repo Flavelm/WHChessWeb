@@ -101,5 +101,15 @@ module.exports = {
             }
         });
         return await response.json();
+    },
+    async join(id, roomName) {
+        const response = await fetch(url + "/join", {
+            headers: {
+                id: id,
+                roomname: roomName,
+                platform: "web-0.1"
+            }
+        });
+        return await response.json();
     }
 }

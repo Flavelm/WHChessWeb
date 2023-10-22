@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="w-full max-w-screen-xl mt-2 bg-secondary flex justify-center">
+    <div class="mt-2 bg-secondary flex justify-center">
       <v-btn
           :loading="btnLoading"
           v-on:click="update"
@@ -59,6 +59,12 @@ export default {
         }, 1500);
         this.btnLoading = false;
       });
+    }
+  },
+  beforeCreate() {
+    const id = window.localStorage.getItem("id");
+    if (id === null) {
+      this.$router.replace({path: "/"});
     }
   },
   created() {

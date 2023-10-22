@@ -29,11 +29,14 @@
 </template>
 
 <script>
+import requests from "@/requests"
+
 export default {
   name: "RoomItem",
   props: ["item"],
   data(){
     return {
+      userId: window.localStorage.getItem("id"),
       room: this.item,
       loading: false,
       disabled: false
@@ -62,8 +65,13 @@ export default {
       if (this.room["Players"].length === this.room["MaxPlayers"]) {
         this.loading = false;
         this.disabled = true;
+        return;
       }
-      this.$router.replace({path: `game/${this.room["Name"]}`})
+      requests.join(this.userId, this.room["Name"]).then((json) => {
+        if (json["Join"] === "1") {
+          this.$router.replace({path: `game/${this.room["Name"]}`});
+        }
+      });
     }
   },
   created() {
