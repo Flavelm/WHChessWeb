@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="w-full max-w-screen-xl mt-2 bg-secondary">
+    <div class="w-full max-w-screen-xl mt-2 bg-secondary flex justify-center">
       <v-btn
           :loading="btnLoading"
           v-on:click="update"
           text="Обновить"
           color="primary"
+          class="m-2"
       ></v-btn>
     </div>
     <RoomItem v-for="room in rooms" v-bind:key="room['Name']" :item="room"/>
