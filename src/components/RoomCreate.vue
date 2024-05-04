@@ -81,9 +81,9 @@ export default {
   methods: {
     async submit() {
       requests.create(this.userId, this.roomName,
-          this.modeFree === "Выключить",
-           this.modeRandom === "Включить",
-              this.modeFog === "Включить")
+          this.modeFree === "Выключить" ? "true" : "false",
+           this.modeRandom === "Включить" ? "true" : "false",
+              this.modeFog === "Включить" ? "true" : "false")
           .then((json) => {
         if (json["Create"] === 0) {
           this.text = `Ошибка "${json["description"]}"`;
