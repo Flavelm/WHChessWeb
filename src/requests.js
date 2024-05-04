@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:5001"
+const url = window.location.origin + "/api";
 
 module.exports = {
     async login(nick, pass) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-2 bg-secondary flex justify-center">
+    <div class="mt-2 bg-secondary flex justify-center rounded">
       <v-btn
           :loading="btnLoading"
           v-on:click="update"

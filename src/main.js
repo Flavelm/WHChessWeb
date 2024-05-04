@@ -26,18 +26,18 @@ const vuetify = createVuetify({
             },
         },
     },
-})
+});
 
 const routes = [
     { path: '/', component: Auth },
     { path: '/rooms', component: MainMenu },
     { path: '/game/:roomName', component: GamePage },
     { path: '/:pathMatch(.*)*', component: PageNotFound }
-]
+];
 
 const router= createRouter({
     history: createWebHistory(),
     routes
-})
+});
 
 createApp(App).use(vuetify).use(router).mount('#app')
