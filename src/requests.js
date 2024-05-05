@@ -89,6 +89,16 @@ module.exports = {
         });
         return await response.json();
     },
+    async isWaitPlayer(id, roomName) {
+        const response = await fetch(url + "/room/iswaitplayer", {
+            headers: {
+                id: id,
+                roomname: roomName,
+                platform: "web-0.1"
+            }
+        });
+        return await response.json();
+    },
     async create(id, roomName, antiCheat, random, fog) {
         const response = await fetch(url + "/create", {
             headers: {

@@ -12,7 +12,8 @@
       <v-card-item>
         Вы играете за {{color}}
         <br/>
-        Ваш ход!
+        <div v-if="this.isWaiting">Ваш ход!</div>
+        <div v-else>Ходит оппонент!</div>
       </v-card-item>
 
       <v-card-title>
@@ -62,6 +63,7 @@ export default {
     return {
       chatHistory: [],
       color: "-",
+      isWaiting: false,
       message: "",
       loading: false,
       longPollInterval: null,
@@ -87,6 +89,9 @@ export default {
     this.longPollInterval = setInterval(() => {
       requests.color(this.userId, this.roomName).then((json) => {
         this.color = json["Color"];
+      });
+      requests.isWaitPlayer(this.userId, this.roomName).then((json) => {
+        this.isWaiting = json["WP"];
       });
       requests.chatHistory(this.roomName).then((json) => {
         this.chatHistory = json["ChatHistory"];
