@@ -74,6 +74,12 @@ export default {
       });
     }
   },
+  beforeCreate() {
+    const login = window.localStorage.getItem("login");
+    if (this.room["Players"].includes(login)) {
+      this.$router.replace({path: `game/${this.room["Name"]}`});
+    }
+  },
   created() {
     if (this.room["Players"].length === this.room["MaxPlayers"]) {
       this.disabled = true;

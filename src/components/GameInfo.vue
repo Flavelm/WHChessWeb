@@ -91,7 +91,7 @@ export default {
       requests.chatHistory(this.roomName).then((json) => {
         this.chatHistory = json["ChatHistory"];
       });
-    }, 1000);
+    }, 5000);
   },
   beforeUnmount() {
     clearInterval(this.longPollInterval);

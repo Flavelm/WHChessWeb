@@ -63,7 +63,8 @@ export default {
   },
   beforeCreate() {
     const id = window.localStorage.getItem("id");
-    if (id === null) {
+    const name = window.localStorage.getItem("login");
+    if (id === null || name == null) {
       this.$router.replace({path: "/"});
     }
   },

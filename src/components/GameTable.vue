@@ -134,7 +134,7 @@ export default {
       return;
     }
     console.log(`Table, room: ${this.roomName}`);
-    this.longPollInterval = setInterval(this.updateTable, 1000);
+    this.longPollInterval = setInterval(this.updateTable, 2000);
   },
   beforeUnmount() {
     clearInterval(this.longPollInterval);

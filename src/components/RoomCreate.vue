@@ -81,7 +81,7 @@ export default {
   methods: {
     async submit() {
       requests.create(this.userId, this.roomName,
-          this.modeFree === "Выключить",
+          this.modeFree === "Включить",
            this.modeRandom === "Включить",
               this.modeFog === "Включить")
           .then((json) => {

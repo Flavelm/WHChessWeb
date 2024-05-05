@@ -75,11 +75,11 @@ export default {
         if (json["PlayerRegistered"] !== undefined) {
           if (json["PlayerRegistered"] === 0) {
             this.loading = false;
-            this.snackbarText = "Ник занят"
+            this.snackbarText = "Ник занят";
             this.snackbar = true;
             return;
           } else {
-            this.snackbarText = "Успешно"
+            this.snackbarText = "Успешно";
             this.snackbar = true;
             this.isRegister = false;
             return;
@@ -87,11 +87,12 @@ export default {
         }
         if (json["Error"] !== undefined || json["id"] < 0){
           this.loading = false;
-          this.snackbarText = "Не верные данные"
+          this.snackbarText = "Не верные данные";
           this.snackbar = true;
           return;
         }
-        window.localStorage.setItem("id", json["id"])
+        window.localStorage.setItem("id", json["id"]);
+        window.localStorage.setItem("login", this.login);
         this.$router.replace({ path: '/rooms' });
       }).catch(() => {
         this.snackbarText = "Ошибка сети"
@@ -106,8 +107,9 @@ export default {
     }
   },
   beforeCreate() {
-    const value = window.localStorage.getItem("id")
-    if (value !== null) {
+    const value = window.localStorage.getItem("id");
+    const login = window.localStorage.getItem("login")
+    if (value !== null && login !== null) {
       this.$router.replace({ path: '/rooms' })
     }
   }
