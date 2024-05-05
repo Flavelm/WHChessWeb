@@ -67,6 +67,7 @@ export default {
       message: "",
       loading: false,
       longPollInterval: null,
+      longPollInterval1: null,
       rules: [v => !!v || 'Обязательно',
         v => /[A-Za-z0-9]+/.test(v)||'Только на англиском!']
     }
@@ -90,16 +91,19 @@ export default {
       requests.color(this.userId, this.roomName).then((json) => {
         this.color = json["Color"];
       });
-      requests.isWaitPlayer(this.userId, this.roomName).then((json) => {
-        this.isWaiting = json["WP"];
-      });
       requests.chatHistory(this.roomName).then((json) => {
         this.chatHistory = json["ChatHistory"];
       });
     }, 5000);
+    this.longPollInterval1 = setInterval(() => {
+      requests.isWaitPlayer(this.userId, this.roomName).then((json) => {
+        this.isWaiting = json["WP"];
+      });
+    }, 2000);
   },
   beforeUnmount() {
     clearInterval(this.longPollInterval);
+    clearInterval(this.longPollInterval1);
   }
 }
 </script>
